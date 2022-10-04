@@ -22,19 +22,24 @@
                         <li class="navbar-nav flex-grow-1">
                             <a class="nav-link text-dark" asp-controller="PartNames" asp-action="Index"><i class="bi-tools"></i> Parts</a>
                         </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" 
-                               aria-expanded="false" >
-                            <i class="bi bi-gear"></i> Managment
-                            </a>
-                        
 
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" asp-controller="Shops" asp-action="Index"> <i class="bi bi-shop"></i> Shops</a>
-                            <a class="dropdown-item" asp-controller="Producers" asp-action="Index">Manufacturer</a>
-                            <a class="dropdown-item" asp-controller="Brands" asp-action="Index">Brands</a>
-                        </div>
-                        </li>
+                        @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                        {
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+                                   aria-expanded="false">
+                                    <i class="bi bi-gear"></i> Managment
+                                </a>
+
+
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" asp-controller="Shops" asp-action="Index"> <i class="bi bi-shop"></i> Shops</a>
+                                    <a class="dropdown-item" asp-controller="Producers" asp-action="Index"><i class="bi bi-building"></i> Manufacturers</a>
+                                    <a class="dropdown-item" asp-controller="Brands" asp-action="Index"><i class="fa-brands fa-bootstrap"></i> Brands</a>
+                                </div>
+                            </li>
+                        }
+
                     </ul>
                     <form class="form-inline my-2 my-lg-0" asp-controller="PartNames" asp-action="Filter" style="padding-right: 25px;">
                         <input name="searchString" type="text" class="form-control" placeholder="Search for a part..." aria-label="Recipient's username" aria-describedby="button-addon2">
@@ -45,20 +50,9 @@
                         @await Component.InvokeAsync("ShoppingCartSummary")
                     </ul>
 
-                    @*User profile section*@
-                    <div class="dropdown">
-                        <button class="btn btn-outline-success dropdown-toggle" type="button" id="profile-btn" data-toggle="dropdown"
-                                aria-expanded="false">
-                            <i class="bi bi-person-badge"></i> Hello User
-                        </button>
-                        <ul class="dropdown-menu" aria-labelledby="profile-btn">
-                            <li>
-                                <a class="dropdown-item" asp-controller="Orders" asp-action="Index">
-                                    <i class="bi bi-list"></i>Orders
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
+                   
+                    <partial name="_Identity.cshtml" />
+
 
                 </div>
             </div>

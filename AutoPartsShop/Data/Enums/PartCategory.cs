@@ -11,6 +11,8 @@ namespace AutoPartsShop.Data
         OilFilter,
         Oil,
         Brakes,
+        Battery,
+        Tires,
         etc
     }
 }

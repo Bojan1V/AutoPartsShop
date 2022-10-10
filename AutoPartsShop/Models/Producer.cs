@@ -12,7 +12,7 @@ namespace AutoPartsShop.Models
         [Key]
         public int Id { get; set; }
 
-        [Display(Name = "Picture of the producer")]
+        [Display(Name = "Picture of the manufacturer")]
         [Required(ErrorMessage = "The Picture is required")]
         public string ProfilePictureURL { get; set; }
 

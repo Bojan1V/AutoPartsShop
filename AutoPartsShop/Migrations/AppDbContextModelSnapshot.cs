@@ -133,9 +133,11 @@ namespace AutoPartsShop.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Orders");
                 });
@@ -424,6 +426,15 @@ namespace AutoPartsShop.Migrations
                     b.Navigation("Brand");
 
                     b.Navigation("PartName");
+                });
+
+            modelBuilder.Entity("AutoPartsShop.Models.Order", b =>
+                {
+                    b.HasOne("AutoPartsShop.Models.ApplicationUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("AutoPartsShop.Models.OrderItem", b =>

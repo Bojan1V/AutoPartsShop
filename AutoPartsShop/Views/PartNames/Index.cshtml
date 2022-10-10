@@ -29,6 +29,7 @@
                             <div class="card-body">
                                 <p class="card-text">@item.Description</p>
                                 <p class="card-text"><b>Shop: </b>@item.Shop.Name</p>
+                                <p class="card-text"><b>Location: </b>@item.Shop.Description</p>
                                 <p class="card-text"><b>Category: </b>@item.PartCategory</p>
                                 <p class="card-text"></p>
                             </div>
@@ -48,4 +49,4 @@
     </div>
 }
 
-@await Html.PartialAsync("_CreateItem", "PartNames");
+@await Html.PartialAsync("_CreateItem", "PartNames")

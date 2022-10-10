@@ -17,9 +17,10 @@ namespace AutoPartsShop.Models
         [Display(Name = "Shop name")]
         [Required(ErrorMessage = "Shop name is required")]
         public string Name { get; set; }
-        [Display(Name = "Shop description")]
-        [Required(ErrorMessage = "Shop description is required")]
+        [Display(Name = "Shop location")]
+        [Required(ErrorMessage = "Shop location is required")]
         public string Description { get; set; }
+
 
         //Relationships
         public List<PartName> PartNames { get; set; }
